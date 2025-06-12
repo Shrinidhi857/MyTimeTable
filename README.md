@@ -27,23 +27,23 @@
 ---
 
 ## 📲 Screenshots
-![img.png](img.png)
-### Create Timetable Page
-![img_3.png](img_3.png)!
 
-### Streak Board & Attendance
-![img_2.png](img_2.png)![Streak Board](assets/streak_board.jpg)
+<p float="left">
+  <img src="img.png" width="250"/>
+  <img src="img_3.png" width="250"/>
+  <img src="img_2.png" width="250"/>
+</p>
 
 ---
 
 ## ⚙️ Tech Stack
 
-| Technology     | Usage                     |
-|----------------|----------------------------|
-| Flutter        | Frontend UI framework      |
-| Firebase       | (Optional) backend for cloud sync |
-| SharedPrefs / Hive | Local data storage     |
-| Dart           | Main programming language |
+| Technology         | Usage                          |
+|--------------------|--------------------------------|
+| Flutter            | Frontend UI framework          |
+| Firebase (optional)| Backend cloud sync (optional)  |
+| SharedPrefs / Hive | Local data storage             |
+| Dart               | Main programming language      |
 
 ---
 
