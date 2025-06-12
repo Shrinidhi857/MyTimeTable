@@ -9,6 +9,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:intl/intl.dart';
 import 'package:mytimetable/components/heatmap.dart';
 import 'package:mytimetable/data/dataset.dart';
+import 'package:mytimetable/data/todayclass.dart';
 import 'package:mytimetable/helper/adHelper.dart';
 import 'package:mytimetable/pages/timetable.dart';
 import 'package:mytimetable/auth/google_auth.dart';
@@ -46,15 +47,18 @@ class _HomePageState extends State<HomePage> {
     loadBannerAd();
     loadHeatMapData();
 
+
   }
 
   Future<void> loadHeatMapData() async {
     await heatmapdata.loadData();
+
     setState(() {
       dataset = heatmapdata.dataset;
     });
   }
 
+//----------------------------------------------------------------
 
   Future<void> fetchData() async {
     db.loadData();
@@ -72,6 +76,7 @@ class _HomePageState extends State<HomePage> {
       TodayClasses = localData;
     });
   }
+  //-------------------------------------------------------------------
 
   Future<void> getUserData(String userId, String day) async {
     try {
@@ -96,10 +101,11 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  //---------------------------------------------------------------------------
+
   Future<void> updateAttendance(String subjectName, String field, int change) async {
     try {
       if (userId == null) return;
-
       String sanitizedSubjectName = subjectName.replaceAll(RegExp(r'[^\w\s]'), '').replaceAll(' ', '_');
       DocumentReference docRef = FirebaseFirestore.instance
           .collection("Users")
@@ -113,6 +119,8 @@ class _HomePageState extends State<HomePage> {
       print("\n❌Error updating $field count: $e \n");
     }
   }
+
+  //----------------------------------------------------------------------------
 
   Future<void> checkBoxChanged(bool? value, int index) async {
     if (value == null) return;
@@ -133,6 +141,8 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  //----------------------------------------------------------------------------
+
   Future<void> markAsSkipped(int index) async {
     setState(() {
       var current = TodayClasses[index];
@@ -142,6 +152,8 @@ class _HomePageState extends State<HomePage> {
     heatmapdata.loadData();
   }
 
+  //----------------------------------------------------------------------------
+
   void openTimeTablePage() async {
     await Navigator.push(
       context,
@@ -150,11 +162,15 @@ class _HomePageState extends State<HomePage> {
     fetchData();
   }
 
+  //----------------------------------------------------------------------------
+
   void logout() async {
     FirebaseAuth.instance.signOut();
     await _myBox.clear();
     GoogleSignIn().signOut();
   }
+
+  //----------------------------------------------------------------------------
   void loadBannerAd() {
     _bannerAd = BannerAd(
       adUnitId: AdHelper.bannerAdUnitId,
@@ -180,11 +196,16 @@ class _HomePageState extends State<HomePage> {
     _bannerAd?.load(); // Load the ad
   }
 
+  //----------------------------------------------------------------------------
+
   String StringEditor(String input) {
     RegExp regex = RegExp(r':(.*?),');
     Match? match = regex.firstMatch(input);
     return match != null ? match.group(1)!.trim() : '';
   }
+
+
+  //----------------------------------------------------------------------------
 
   @override
   Widget build(BuildContext context) {

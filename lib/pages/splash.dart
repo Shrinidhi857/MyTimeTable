@@ -31,12 +31,13 @@ class _SplashPageState extends State<SplashPage> {
 
 
     return Scaffold(
+
       backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(getThemedImage(context),scale: 2.5,),
+            Image.asset(getThemedImage(context),scale: 3,),
             Text("MY TIME TABLE",
               style: TextStyle(
                 color: Theme.of(context).colorScheme.inversePrimary,

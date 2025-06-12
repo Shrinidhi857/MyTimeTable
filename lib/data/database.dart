@@ -5,7 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class TimeTableDatabase {
   final _myBox = Hive.box('mybox');
-  Map<String, List<Map<String, String>>> timeTable = {}; // Initialize empty map
+  Map<String, List<Map<String, String>>> timeTable = {};// Initialize empty map
+  Map<DateTime, int> _heatmapData = {};
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   // 🔹 Ensure user-specific storage
@@ -24,6 +25,10 @@ class TimeTableDatabase {
       'Sunday': [],
     };
     print("\n✅ Hive Table initialized\n");
+    _heatmapData={};
+    print("\n✅ Hive Dataset initialized\n");
+
+
   }
 
   // 🔹 Load timetable from Hive (local) or Firestore (cloud)

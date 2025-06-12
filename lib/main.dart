@@ -10,6 +10,7 @@ import 'package:mytimetable/pages/Forgot_password.dart';
 import 'package:mytimetable/pages/home.dart';
 import 'package:mytimetable/pages/settings.dart';
 import 'package:mytimetable/pages/splash.dart';
+import 'package:mytimetable/pages/stat.dart';
 import 'package:mytimetable/pages/timetable.dart';
 import 'auth/auth.dart';
 import 'components/dialogbox.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: lightMode,
       darkTheme: darkMode,
-      home:const AuthPage(),
+      home: SplashPage(),
       routes:{
         '/home':(context)=>HomePage(),
       '/settingspage':(context) =>SettingsPage(),
